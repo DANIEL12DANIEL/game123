@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עץ משפחה עם פופאפ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            direction: rtl;
+            background-image: url("https://www.fertilome.com/media/klowrey/Article%20Images/Tree.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .tree {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .person {
+            cursor: pointer;
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px; 
+            width: 50px; 
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .person:hover {
+            background: #dddddd;
+        }
+
+        .popup {
+            position: fixed;
+            bottom: -150px; 
+            left: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transition: bottom 0.4s ease-in-out;
+        }
+
+        .popup.active {
+            bottom: 0;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .popup h2 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tree">
+        <div class="generation">
+            <div class="person" onclick="showPopup('סבתא מרים', 'היא אהבה לקרוא ספרים ולהתנדב בקהילה.')">
+                סבתא מרים
+            </div>
+        </div>
+
+        <div class="person" onclick="showPopup('אח יאיר', 'הוא אוהב לצלם ולחפש טיולים בטבע.')">
+            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="אח יאיר" height="50" width="80">
+        </div>
+        
+        <div class="person" onclick="showPopup('אחות שרה', 'היא אוהבת להתנדב בבתי אבות ולעזור.')">
+            <img src="https://www.w3schools.com/w3images/avatar6.png" alt="אחות שרה" height="50" width="80">
+        </div>
+
+        <div class="generation">
+            <div class="person" onclick="showPopup('רוני', 'היא אוהבת לנסוע לאירועים מוסיקליים.')">
+                רוני
+            </div>
+            <div class="person" onclick="showPopup('נמרוד', 'הוא אוהב לשחק כדורגל ולקרוא ספרי הרפתקאות.')">
+                נמרוד
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <h2 id="popup-name">שם</h2>
+        <p id="popup-info">מידע...</p>
+    </div>
+
+    <script>
+        function showPopup(name, info) {
+            document.getElementById("popup-name").innerText = name;
+            document.getElementById("popup-info").innerText = info;
+            document.getElementById("popup").classList.add("active");
+
+            // יצירת כפתור חדש
+
+            // הוספת הכפתור לפופאפ
+            document.getElementById("popup").appendChild(button);
+        }
+
+        function closePopup() {
+            document.getElementById("popup").classList.remove("active");
+        }
+    </script>
+
+</body>
+</html>
